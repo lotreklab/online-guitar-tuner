@@ -1,5 +1,8 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
+var middleA=440
+var semitone = 69
+
 var audioContext = null;
 var isPlaying = false;
 var sourceNode = null;
@@ -22,7 +25,7 @@ var buf = new Float32Array( buflen );
 
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 var startRecord = null
-
+var meter=null
 
 window.onload = function() {
     audioContext = new AudioContext();
@@ -44,6 +47,36 @@ window.onload = function() {
 
     startRecord = document.querySelector('#start-record')
     startRecord.addEventListener('click', toggleLiveInput)
+
+
+
+	const Meter = function(selector) {
+		this.$root = document.querySelector(selector)
+		this.$pointer = this.$root.querySelector('.meter-pointer')
+		this.init()
+	  }
+	
+	Meter.prototype.init = function() {
+		for (var i = 0; i <= 10; i += 1) {
+		  const $scale = document.createElement('div')
+		  $scale.className = 'meter-scale'
+		  $scale.style.transform = 'rotate(' + (i * 9 - 45) + 'deg)'
+		  if (i % 5 === 0) {
+			$scale.classList.add('meter-scale-strong')
+		  }
+		  this.$root.appendChild($scale)
+		}
+	  }
+	
+	/**
+	 * @param {number} deg
+	 */
+	Meter.prototype.update = function(deg) {
+	this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
+	}
+	meter = new Meter('.meter')
+
+
 }
 
 
@@ -222,6 +255,9 @@ function updatePitch( time ) {
 	 	pitch = ffb;
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
+		var cents = centsFromNote(pitch, note);
+		
+		meter.update((cents / 50) * 45)
 
         var octave = null
         if( (parseInt(note / 12) - 1) <= 8 &&  (parseInt(note / 12) - 1) >= 0){
@@ -241,7 +277,34 @@ function updatePitch( time ) {
 }
 
 function noteFromPitch( frequency ) {
-	var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
+	if(frequency>16 && frequency<7903){
+		var noteNum = 12 * (Math.log( frequency / middleA )/Math.log(2) );
+		return Math.round( noteNum ) + semitone;
+	}
+}
 
-	return Math.round( noteNum ) + 69;
+
+
+/**
+ * get cents difference between given frequency and musical note's standard frequency
+ *
+ * @param {number} frequency
+ * @param {number} note
+ * @returns {number}
+ */
+function centsFromNote( frequency, note ) {
+	return Math.floor(
+		(1200 * Math.log(frequency / getStandardFrequency(note))) / Math.log(2)
+	)
+}
+
+
+
+/**
+ * get the musical note's standard frequency
+ *
+ */
+ function getStandardFrequency(note) {
+	return middleA * Math.pow(2, (note - semitone) / 12)
+
 }
