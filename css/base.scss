@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 .app{
     &__core{
         display: grid;
-        gap: 2rem;
+        gap: 4rem;
+        font-family: 'Quicksand', sans-serif;
     }
     &__tuner{
         display: grid;
-        gap: 2rem;
-    }
-    &__meter{
-        position: relative;
-        height:50vh;
+        gap: 4rem;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,0);
     }
 }

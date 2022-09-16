@@ -15,6 +15,7 @@ var detectorElem,
 	waveCanvas,
 	pitchElem,
 	noteElem,
+	octaveElem,
 	detuneElem,
 	detuneAmount;
 
@@ -23,7 +24,7 @@ var tracks = null;
 var buflen = 2048;
 var buf = new Float32Array( buflen );
 
-var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+var noteStrings = ["Do", "Do#", "Re", "Re#", "Mi", "Fa", "Fa#", "Sol", "Sol#", "La", "La#", "Si"];
 var startRecord = null
 var meter=null
 
@@ -42,6 +43,7 @@ window.onload = function() {
 	detectorElem = document.getElementById( "detector" );
     pitchElem = document.getElementById( "pitch" );
 	noteElem = document.getElementById( "note" );
+	octaveElem = document.getElementById( "octave" );
     detectorCallback()
 
 
@@ -267,7 +269,8 @@ function updatePitch( time ) {
         var noteName = noteStrings[note%12]
 
          if(noteName && octave){
-            noteElem.innerHTML = noteName + octave;
+            noteElem.innerHTML = noteName;
+			octaveElem.innerHTML = octave;
          }
 	}
 

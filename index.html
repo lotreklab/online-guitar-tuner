@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href='http://fonts.googleapis.com/css?family=Alike' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.scss">
     <title>Vite App</title>
   </head>
@@ -58,13 +57,12 @@
 
 
       <div class="app__tuner">
-        <p>
-          <button id="start-record" >start record</button>
-        </p>
+        <button id="start-record" class="start-record" >start record</button>
 
         <div id="detector" class="vague">
-          <div class="pitch"><span id="pitch">--</span>Hz</div>
-          <div class="note"><span id="note">--</span></div>   
+          <div class="pitch"><span id="pitch" class="pitch--big">&#8226;</span> Hz</div>
+          <div class="note"> <span id="note">note</span></div>   
+          <div class="octave">octave <span id="octave" class="octave--big">&#8226;</span></div>   
         </div>
 
       </div>
