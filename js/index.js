@@ -48,7 +48,10 @@ window.onload = function() {
 
 
     startRecord = document.querySelector('#start-record')
-    startRecord.addEventListener('click', toggleLiveInput)
+    startRecord.addEventListener('click', function(){
+		startRecord.classList.add('disabled')
+		toggleLiveInput()
+	})
 
 
 

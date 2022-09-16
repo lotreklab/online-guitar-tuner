@@ -1,29 +1,6 @@
 @use "sass:math";
 
-:root {
-  // Sizes
-  --img-width: 343;
-  --img-height: 882;
-  --gtr-width: 32rem;
-  --gtr-height: calc(var(--gtr-width) * var(--img-height) / var(--img-width));
-  --nut-height: 0.32rem;
-  --scale-length: 51.7rem;
-  --artboard-padding: 2rem;
-  // Colors
-  --background: #fff;
-  --body-finish: #ffc57f;
-  --black: #1d1d1d;
-  --rosewood: #7d4931;
-  --glossy-rosewood: #673f2d;
-  --dark-rosewood: #4e2e1f;
-  --pickguard-color: #9c2d2d;
-  --gray-1: #ccc;
-  --gray-2: #aaa;
-  --gray-3: #524a4a;
-  --gold-1: #d6c48e;
-  --gold-2: #d0b152;
-  --gold-3: #a78b38;
-}
+
 
 .artboard{
   *,
@@ -41,25 +18,6 @@
   transform: translate(-50%, 0);
 }
 
-html {
-  font-size: 62.5%;
-  @media (max-height: 780px) {
-    font-size: 36%;
-  }
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100vw;
-  position: relative;
-  font-size: 1.6rem;
-  overflow-x: hidden;
-  background: var(--background);
-}
-
 .artboard {
   background: var(--background);
   position: relative;
@@ -69,6 +27,10 @@ body {
 .guitar {
   width: var(--gtr-width);
   height: var(--gtr-height);
+  @media (max-width: 991px) {
+    width: var(--gtr-width-mob);
+    height: var(--gtr-height-mob);
+  }
   background: var(--bg);
   position: relative;
   z-index: 1;
@@ -166,6 +128,10 @@ body {
   background: #583927;
   z-index: 1;
   overflow: hidden;
+  @media (max-width: 991px) {
+    width: 4.1rem;
+    height: 4.1rem;
+  }
 }
 
 .bridge {

@@ -68,6 +68,10 @@ div.vague { color: lightgrey; }
       box-shadow: 1px 1px 2px 1px rgba(0,0,0,.6);
     }
   }
+  &.disabled{
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 .meter {
     //position: absolute;

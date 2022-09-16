@@ -1,16 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+:root {
+    // Sizes
+    --img-width: 343;
+    --img-width-mob: 171;
+    --img-height: 882;
+    --img-height-mob: 441;
+    --gtr-width: 32rem;
+    --gtr-width-mob: 16rem;
+    --gtr-height: calc(var(--gtr-width) * var(--img-height) / var(--img-width));
+    --gtr-height-mob: calc(var(--gtr-width-mob) * var(--img-height-mob) / var(--img-width-mob));
+    --nut-height: 0.32rem;
+    --scale-length: 51.7rem;
+    --artboard-padding: 2rem;
+    // Colors
+    --background: #fff;
+    --body-finish: #ffc57f;
+    --black: #1d1d1d;
+    --rosewood: #7d4931;
+    --glossy-rosewood: #673f2d;
+    --dark-rosewood: #4e2e1f;
+    --pickguard-color: #9c2d2d;
+    --gray-1: #ccc;
+    --gray-2: #aaa;
+    --gray-3: #524a4a;
+    --gold-1: #d6c48e;
+    --gold-2: #d0b152;
+    --gold-3: #a78b38;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    @media (max-height: 991px) {
+      font-size: 36%;
+    }
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    font-size: 1.6rem;
+    overflow-x: hidden;
+    background: var(--background);
+  }
+  
 .app{
     &__core{
+        position: relative;
         display: grid;
-        gap: 4rem;
         font-family: 'Quicksand', sans-serif;
+        justify-content:center;
+        @media (min-width:991px){
+            gap: 10%;
+            grid-auto-flow: column;
+        }
     }
     &__tuner{
         display: grid;
         gap: 4rem;
-        position: absolute;
+        //position: absolute;
         top: 0;
-        left: 50%;
-        transform: translate(-50%,0);
+        //left: 50%;
+        //transform: translate(-50%,0);
+        min-width: 400px;
+        grid-template-rows:min-content;
+    }
+    &__artboard{
+        min-width: 400px;
+        display: grid;
+        justify-content: center;
+        width: var(--gtr-height);
+        display: flex;
+        justify-content: center;
     }
 }
