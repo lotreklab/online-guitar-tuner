@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./assets/index.4a765336.css">
+  </head>
+  <body>
+    <div class="app__core">
+
+      <div class="app__tuner">
+        <button id="start-record" class="start-record" >start record</button>
+
+        <div id="detector" class="vague">
+          <div class="pitch"><span id="pitch" class="pitch--big">&#8226;</span> Hz</div>
+          <div class="note"> <span id="note">note</span></div>   
+          <div class="octave">octave <span id="octave" class="octave--big">&#8226;</span></div>   
+        </div>
+
+      </div>
+
+      <div class="app__artboard">
+        <div class="meterJS artboard">
+          <div class="guitar">
+            <div class="body">
+              <div class="body__panel body__panel--top-center center"></div>
+              <div class="body__panel body__panel--top-left"></div>
+              <div class="body__panel body__panel--top-right"></div>
+              <div class="body__panel body__panel--middle"></div>
+              <div class="body__panel body__panel--bottom-center center"></div>
+              <div class="body__panel body__panel--bottom-left"></div>
+              <div class="body__panel body__panel--bottom-right"></div>
+              <div class="body__mask body__mask--left"></div>
+              <div class="body__mask body__mask--right"></div>
+              <div class="hole center"></div>
+              <div class="bridge center">
+                <div class="bridge-pins center">
+                </div>
+              </div>
+            </div>
+            <div class=" neck__wrapper center">
+              <div class="neckJS neck ">
+                <div class="headstock center"></div>
+                <div class="fretboard center"> </div>
+                <div class="strings center">
+                  <div class="string string--1"></div>
+                  <div class="string string--2"></div>
+                  <div class="string string--3"></div>
+                  <div class="string string--4"></div>
+                  <div class="string string--5"></div>
+                  <div class="string string--6"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="strings strings--alt center">
+              <div class="string string--1"></div>
+              <div class="string string--2"></div>
+              <div class="string string--3"></div>
+              <div class="string string--4"></div>
+              <div class="string string--5"></div>
+              <div class="string string--6"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <script src="js/index.js"></script>
+
+  </body>
+</html>
