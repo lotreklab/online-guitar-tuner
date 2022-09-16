@@ -31,7 +31,7 @@ var meter=null
 window.onload = function() {
     audioContext = new AudioContext();
     var request = new XMLHttpRequest();
-	request.open("GET", "../sounds/empty_audio.ogg", true);
+	request.open("GET", "./sounds/empty_audio.ogg", true);
 	request.responseType = "arraybuffer";
 	request.onload = function() {
 	  audioContext.decodeAudioData( request.response, function(buffer) { 
