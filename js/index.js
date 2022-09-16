@@ -52,7 +52,7 @@ window.onload = function() {
 
 	const Meter = function(selector) {
 		this.$root = document.querySelector(selector)
-		this.$pointer = this.$root.querySelector('.meter-pointer')
+		this.$pointer = this.$root.querySelector('.neckJS')
 		this.init()
 	  }
 	
@@ -64,7 +64,7 @@ window.onload = function() {
 		  if (i % 5 === 0) {
 			$scale.classList.add('meter-scale-strong')
 		  }
-		  this.$root.appendChild($scale)
+		  this.$root.querySelector('.neck__wrapper').appendChild($scale)
 		}
 	  }
 	
@@ -74,7 +74,7 @@ window.onload = function() {
 	Meter.prototype.update = function(deg) {
 	this.$pointer.style.transform = 'rotate(' + deg + 'deg)'
 	}
-	meter = new Meter('.meter')
+	meter = new Meter('.meterJS')
 
 
 }

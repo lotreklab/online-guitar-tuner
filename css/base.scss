@@ -1,0 +1,14 @@
+.app{
+    &__core{
+        display: grid;
+        gap: 2rem;
+    }
+    &__tuner{
+        display: grid;
+        gap: 2rem;
+    }
+    &__meter{
+        position: relative;
+        height:50vh;
+    }
+}
