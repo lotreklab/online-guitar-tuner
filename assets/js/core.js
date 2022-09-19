@@ -1,4 +1,4 @@
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+function coreJS(){
 
 var middleA=440
 var semitone = 69
@@ -13,6 +13,7 @@ var mediaStreamSource = null;
 var detectorElem, 
 	canvasElem,
 	waveCanvas,
+	pitch,
 	pitchElem,
 	noteElem,
 	octaveElem,
@@ -154,6 +155,8 @@ function frequencyFrombuffer( buffer, sampleRate ) {
 	T0 = maxpos;
 
 	x1=content[T0-1], x2=content[T0], x3=content[T0+1];
+	let a;
+	let b;
 	a = (x1 + x3 - 2*x2)/2;
 	b = (x3 - x1)/2;
 	if (a) T0 = T0 - b/(2*a);
@@ -199,7 +202,6 @@ function togglePlayback() {
     analyser.connect( audioContext.destination );
     sourceNode.start( 0 );
     isPlaying = true;
-    isLiveInput = false;
     updatePitch();
 
     return "stop";
@@ -245,6 +247,7 @@ function gotStream(stream) {
 
 
 function updatePitch( time ) {
+
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
 	var ffb = frequencyFrombuffer( buf, audioContext.sampleRate );
@@ -314,3 +317,5 @@ function centsFromNote( frequency, note ) {
 	return middleA * Math.pow(2, (note - semitone) / 12)
 
 }
+}
+export default coreJS;
