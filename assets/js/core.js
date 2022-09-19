@@ -114,7 +114,6 @@ function detectorCallback(){
 }
 
 function frequencyFrombuffer( buffer, sampleRate ) {
-	// Implements the ACF2+ algorithm
 	var buf_size = buffer.length;
 	var root_main_square = 0;
     var enough_signal_threshold = 0.01
@@ -161,7 +160,10 @@ function frequencyFrombuffer( buffer, sampleRate ) {
 	b = (x3 - x1)/2;
 	if (a) T0 = T0 - b/(2*a);
 
-	return sampleRate/T0;
+	let final_freq = sampleRate / T0
+	if (final_freq > 16 && final_freq < 7903) {
+		return final_freq;
+	}
 }
 
 function streamError() {
@@ -181,7 +183,6 @@ function getUserMedia(dictionary, callback) {
 
 function togglePlayback() {
     if (isPlaying) {
-        //stop playing and return
         sourceNode.stop( 0 );
         sourceNode = null;
         analyser = null;
@@ -211,7 +212,6 @@ function toggleLiveInput() {
     togglePlayback()
 
     if (isPlaying) {
-        //stop playing and return
         sourceNode.stop( 0 );
         sourceNode = null;
         analyser = null;
@@ -235,10 +235,10 @@ function toggleLiveInput() {
 }
 
 function gotStream(stream) {
-    // Create an AudioNode from the stream.
+    // Create a new AudioNode from the stream.
     mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
-    // Connect it to the destination.
+    // Connect context to the destination.
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 2048;
     mediaStreamSource.connect( analyser );
@@ -251,14 +251,9 @@ function updatePitch( time ) {
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
 	var ffb = frequencyFrombuffer( buf, audioContext.sampleRate );
-	// TODO: Paint confidence meter on canvasElem here.
 
 
- 	if (ffb == -1) {
- 		//detectorElem.className = "vague";
-	 	//pitchElem.innerText = "--";
-		//noteElem.innerText = "-";
- 	} else {
+ 	if (ffb != -1) {
 	 	detectorElem.className = "confident";
 	 	pitch = ffb;
 	 	pitchElem.innerText = Math.round( pitch ) ;
