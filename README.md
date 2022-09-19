@@ -1,17 +1,17 @@
 # online-guitar-tuner
 Online Guitar Tuner
 
-# develop with
+## develop with
 Vite
 
-# start develop
+## start develop
 yarn dev
 
-# build
+## build
 yarn build
 
-# github pages
+## github pages
 docs folder
 
-# static files
+## static files
 public folder
